@@ -11,13 +11,8 @@ public class AnalyticsCounter {
 	
 	public static void main(String args[]) throws Exception {
 
-        try {
 		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine(); }
-        catch (NumberFormatException e) {
-            System.out.println();
-            System.exit(-1);
-        }
+		String line = reader.readLine();
         
         int i = 0;
 		int headCount = 0;
