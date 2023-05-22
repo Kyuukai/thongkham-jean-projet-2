@@ -3,11 +3,18 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
 	private static int headacheCount = 0;
 	private static int rashCount = 0;	
 	private static int pupilCount = 0;
+    private ISymptomWriter writer;
+    private ISymptomReader reader;
 	
 	public static void main(String args[]) throws Exception {
 
@@ -40,5 +47,40 @@ public class AnalyticsCounter {
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dialated pupils: " + pupilCount + "\n");
 		writer.close();
+	}
+
+    public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
+		this.reader = reader;
+		this.writer = writer;
+	}
+
+    public AnalyticsCounter() {
+
+    }
+
+    public List<String> getSymptoms() {
+		return this.reader.getSymptoms();
+    }
+
+    public Map<String, Integer> countSymptoms(List<String> symptoms) {
+		Map<String, Integer> frequencyMap = new HashMap<>();
+
+		for (String s: symptoms) {
+			Integer count = frequencyMap.get(s);
+			if (count ==null) {
+				count = 0;
+			}
+			frequencyMap.put(s, count + 1);
+		}
+
+		return frequencyMap;
+	}
+
+    public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
+		return new TreeMap(symptoms);
+	}
+
+    public void writeSymptoms(Map<String, Integer> symptoms) {
+		this.writer.writeSymptoms(symptoms);
 	}
 }
