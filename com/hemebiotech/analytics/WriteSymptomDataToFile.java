@@ -22,7 +22,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 
                     String symptom = iterator.next();
                     Integer symptomCount = symptoms.get(symptom);
-                    String line = String.format("%s %d\n", symptom, symptomCount);
+                    String line = String.format("%s : %d\n", symptom, symptomCount);
 
                     writer.write(line);
                 }
