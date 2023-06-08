@@ -5,13 +5,26 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Writes symptoms and occurrences in a customized file name
+ *
+ */
 public class WriteSymptomDataToFile implements ISymptomWriter {
 
     private String filepath;
 
+    /**
+     * Allows the code to be maintainable
+     * @param filepath
+     */
     public WriteSymptomDataToFile (String filepath) {
         this.filepath = filepath;
     }
+
+    /**
+     * Writes each symptom with its number of occurrences line by line.
+     * @param symptoms
+     */
     public void writeSymptoms(Map<String, Integer> symptoms) {
 
         try {

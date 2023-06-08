@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Reads symptoms and occurrences from a file
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
@@ -22,6 +22,9 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 	
 	@Override
+	/**
+	 * Reads symptoms and occurrences line by line from a file
+	 */
 	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<String>();
 		

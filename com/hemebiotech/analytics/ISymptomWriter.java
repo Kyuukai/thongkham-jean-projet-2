@@ -8,5 +8,10 @@ import java.util.Map;
  *
  */
 public interface ISymptomWriter {
-public void writeSymptoms(Map<String, Integer> symptoms);
+    /**
+     * Write each symptoms in a Map
+     *
+     * @param symptoms
+     */
+    public void writeSymptoms(Map<String, Integer> symptoms);
 }
